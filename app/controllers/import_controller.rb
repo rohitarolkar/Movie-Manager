@@ -1,0 +1,2 @@
+class ImportController < ApplicationController
+end
