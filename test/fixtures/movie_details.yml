@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  movie_id: 1
+  cast_members: MyText
+  director: MyString
+  genres: MyString
+  languages: MyString
+  length: 1
+  plot: MyText
+  poster: MyString
+  imdb_ratings: 1.5
+  my_ratings: 1.5
+  tagline: MyString
+  trailer_url: MyString
+  year: 1
+
+two:
+  movie_id: 1
+  cast_members: MyText
+  director: MyString
+  genres: MyString
+  languages: MyString
+  length: 1
+  plot: MyText
+  poster: MyString
+  imdb_ratings: 1.5
+  my_ratings: 1.5
+  tagline: MyString
+  trailer_url: MyString
+  year: 1

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-AppLoki::Application.load_tasks
+JustMovieManager::Application.load_tasks

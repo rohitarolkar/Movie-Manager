@@ -1,0 +1,8 @@
+<% if movies %>
+<h3> Click the  movie for saving </h3>
+  <% movies.each do |movie| %>
+    <%= link_to movie.title ,:controller => 'akas_imdbs',:action => 'add_movie' ,:imdb_id => movie.id %>
+    <br/>
+    <br/>
+  <% end %>
+<% end %>

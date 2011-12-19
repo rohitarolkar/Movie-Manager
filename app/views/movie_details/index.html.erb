@@ -1,0 +1,47 @@
+<h1>Listing movie_details</h1>
+
+<table>
+  <tr>
+    <th>Movie</th>
+    <th>Cast members</th>
+    <th>Director</th>
+    <th>Genres</th>
+    <th>Languages</th>
+    <th>Length</th>
+    <th>Plot</th>
+    <th>Poster</th>
+    <th>Imdb ratings</th>
+    <th>My ratings</th>
+    <th>Tagline</th>
+    <th>Trailer url</th>
+    <th>Year</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movie_details.each do |movie_detail| %>
+  <tr>
+    <td><%= movie_detail.movie_id %></td>
+    <td><%= movie_detail.cast_members %></td>
+    <td><%= movie_detail.director %></td>
+    <td><%= movie_detail.genres %></td>
+    <td><%= movie_detail.languages %></td>
+    <td><%= movie_detail.length %></td>
+    <td><%= movie_detail.plot %></td>
+    <td><%= movie_detail.poster %></td>
+    <td><%= movie_detail.imdb_ratings %></td>
+    <td><%= movie_detail.my_ratings %></td>
+    <td><%= movie_detail.tagline %></td>
+    <td><%= movie_detail.trailer_url %></td>
+    <td><%= movie_detail.year %></td>
+    <td><%= link_to 'Show', movie_detail %></td>
+    <td><%= link_to 'Edit', edit_movie_detail_path(movie_detail) %></td>
+    <td><%= link_to 'Destroy', movie_detail, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Movie detail', new_movie_detail_path %>

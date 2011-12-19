@@ -5,8 +5,8 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+#gem 'sqlite3'
+gem 'pg', :require => 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,7 +32,11 @@ gem 'jquery-rails'
 
 gem 'therubyracer'
 gem 'imdb'
+gem 'resque',:require => "resque/server"
 
+group :development do
+  gem 'pry'
+end
 
 group :test do
   # Pretty printed test output

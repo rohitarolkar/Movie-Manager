@@ -1,0 +1,12 @@
+  <h3>Your HDD movies</h3>
+  <%= form_tag import_movies_akas_imdbs_path do  %>
+    <% files.each do |file| %>
+      <%= check_box_tag "movies[]", file %>
+      <%= file %>
+      <br/>
+    <% end %>
+
+    <div class="actions">
+      <%= submit_tag "Add Movies" %>
+    </div>
+  <% end %>

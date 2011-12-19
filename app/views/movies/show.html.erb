@@ -1,5 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Title:</b>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <b>Imdb:</b>
+  <%= @movie.imdb_id %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @movie.url %>
+</p>
+<% if @movie.movie_detail %>
+  <p>
+    <b>Director:</b>
+    <%= @movie.movie_detail.director %>
+  </p>
+
+  <p>
+    <b>Imdb Rating:</b>
+    <%= @movie.movie_detail.imdb_rating %>
+  </p>
+
+  <p>
+    <%= image_tag "posters/#{@movie.imdb_id}_small.jpg" %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+<%  unless @movie.movie_detail.present? %> |
+  <%= link_to'Update Movie', :controller => 'akas_imdbs',:action => 'add_movie' ,:imdb_id => @movie.id %>
+<% end %>

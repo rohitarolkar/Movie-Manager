@@ -1,0 +1,29 @@
+<%= form_tag akas_imdbs_path , :multipart => true ,:method => :get do |f| %>
+  <div class="field">
+    <%= label_tag :movie_title %><br />
+    <%= text_field_tag :movie_title %>
+  </div>
+  <div class="field">
+    <%= label_tag :imdb_id %><br />
+    <%= text_field_tag :imdb_id %>
+  </div>
+  <div class="field">
+    <%= label_tag :url %><br />
+    <%= text_field_tag :url %>
+  </div>
+
+  <h2>Or specify Path here</h2>
+  <div class="field">
+    <%= label_tag :directory_path %><br />
+    <%= text_field_tag :dir_path %>
+  </div>
+  <div class="field">
+    <%= label_tag :browse_file %><br />
+    <%= file_field_tag :file_path %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+

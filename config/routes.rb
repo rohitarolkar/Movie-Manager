@@ -1,5 +1,18 @@
-AppLoki::Application.routes.draw do
+JustMovieManager::Application.routes.draw do
+
+  resources :movie_details
+
   resources :movies
+  root :to => "movies#index"
+
+  resources :akas_imdbs do
+    collection do
+      get 'add_movie'
+      post 'import_movies'
+    end
+  end
+  
+  mount Resque::Server, :at => "/resque"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

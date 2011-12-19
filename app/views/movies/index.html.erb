@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Title</th>
+    <th>Imdb</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +11,8 @@
 
 <% @movies.each do |movie| %>
   <tr>
+    <td><%= movie.title %></td>
+    <td><%= movie.imdb_id %></td>
     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %></td>
@@ -18,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Movie', new_movie_path %>
+<%= link_to 'New Movie', akas_imdbs_path %>

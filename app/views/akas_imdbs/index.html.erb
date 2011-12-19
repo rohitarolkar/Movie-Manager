@@ -1,0 +1,10 @@
+<h2>Import some movies now</h2>
+<%= render 'form' %>
+
+<br/>
+<% if @dir_files %>
+<%= render 'dir_results_fetched' ,:files => @dir_files %>
+<% end %>
+
+<%= render 'search_results', :movies => @fetched_movies %>
+
