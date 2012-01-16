@@ -1,25 +1,44 @@
-<h1>Listing movies</h1>
+<div id="main-container">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Imdb</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <h1>Listing movies</h1>
+  <%= link_to 'Add Movies', akas_imdbs_path %>
+  <br />
+  <br />
+  <div id="search-movies">
+    <%= form_tag movies_path ,:method => :get do %>
+      <div class="field">
+        <%= label_tag :search %>
+        <%= text_field_tag :search ,params[:search] %>
+        <%= submit_tag :search %>
+      </div>
+    <% end %>
+  </div>
+  <%= sortable "title" %>
+  <%= sortable "year" %>
+  <%= sortable "created_at","Date Added" %>
+  <%= sortable "imdb_rating" %>
+  <%= sortable "my_rating" %>
+  <br />
 
-<% @movies.each do |movie| %>
-  <tr>
-    <td><%= movie.title %></td>
-    <td><%= movie.imdb_id %></td>
-    <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="paginate-me" style="height: 50px;">
+    <%= will_paginate @movies %>
+  </div>
+  <div id="poster-images">
+    <ul id="nav">
+      <% @movies.each do |movie| %>
+        <li>
+          <div class="movie-block-index">
+            <%= link_to image_tag("posters/#{movie.imdb_id}_small.jpg" , :border => 0) , movie %>
+            <%= link_to movie.title ,movie%>
+            <div class="classification"><div class="cover"></div><div class="progress" style="width: 27%;"></div></div>
+          </div>
+        </li>
+      <% end %>
+    </ul> 
+  </div>
 
-<br />
+  <div class="paginate-me">
+    <%= will_paginate @movies %>
+  </div>
 
-<%= link_to 'New Movie', akas_imdbs_path %>
+</div>

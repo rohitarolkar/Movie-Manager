@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'imdb'
 gem 'resque',:require => "resque/server"
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'pry'

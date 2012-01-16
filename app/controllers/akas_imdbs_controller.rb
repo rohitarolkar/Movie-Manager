@@ -20,7 +20,7 @@ class AkasImdbsController < ApplicationController
   end
 
   def import_movies
-    Resque.enqueue(MassImport,params[:movies])
+    Resque.enqueue(FetchMovie,nil,params[:movies] )
     redirect_to movies_path
   end
 

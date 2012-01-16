@@ -16,3 +16,6 @@
 
 #Ignore Netbeans files
 /nbproject
+
+#Ignore Movie Posters
+/app/assets/images/posters/

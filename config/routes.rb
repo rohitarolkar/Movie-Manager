@@ -1,7 +1,5 @@
 JustMovieManager::Application.routes.draw do
 
-  resources :movie_details
-
   resources :movies
   root :to => "movies#index"
 

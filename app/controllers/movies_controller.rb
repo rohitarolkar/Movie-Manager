@@ -1,13 +1,8 @@
 class MoviesController < ApplicationController
-  # GET /movies
-  # GET /movies.json
   def index
-    @movies = Movie.all
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @movies }
-    end
+    #@movies = Movie.search(params[:search])
+    #@movies = Movie.order(sort_column + " " + sort_order)
+    @movies = Movie.fetch_movies(params)
   end
 
   # GET /movies/1
@@ -15,21 +10,12 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @movie }
-    end
   end
 
   # GET /movies/new
   # GET /movies/new.json
   def new
     @movie = Movie.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @movie }
-    end
   end
 
   # GET /movies/1/edit
@@ -80,4 +66,6 @@ class MoviesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+ 
 end
