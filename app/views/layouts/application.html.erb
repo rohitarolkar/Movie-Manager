@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Just Movie Manager</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>JusT's Movie Manager</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Movie Manager</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><%= link_to "Add Movies", akas_imdbs_path %></li>
+          </ul>          
+          <%= form_tag movies_path ,:method => :get, :html => {:class => "pull-left"} do %>
+            <%= text_field_tag :search ,params[:search] %>
+            <%= submit_tag :search %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="sidebar">
+        <div class="well">
+        </div>
+      </div>
+      <div class="content">
+        <%= yield %>
 
-<%= yield %>
+      </div>
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
+    </div>
 
-</body>
+
+  </body>
 </html>

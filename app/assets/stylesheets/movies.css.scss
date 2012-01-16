@@ -2,83 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#poster-images {
-    float:left;
-    width:100%;
-}
-ul#nav li{ margin-left:30px;
+ul#nav li{
+           margin-right:10px;
            float : left;
-           margin-top :21px;
+           margin-top :10px;
            text-decoration:none;
 
-    div.movie-block-index{ height:350px;
-                           width:205px;
+    div.movie-block-index{ 
                            text-align:center;
                          }
-                         a{ text-decoration:none}
-}
-.classification {
-	position: relative;
-	width: 91px;
-	height: 17px;
-}
-.classification .cover {
-	position: absolute;
-	background: transparent url(images/stars.png) top left no-repeat;
-	top: 0px;
-	left: 0px;
-	width: 91px;
-	height: 17px;
-	z-index: 101;
-}
-.classification .progress {
-	position: absolute;
-	background: transparent url(images/stars_full.png) top left no-repeat;
-	top: 0px;
-	left: 0px;
-	height: 17px;
-	z-index: 102;
-}
- 
-div.pagination{         text-align: center;
-                        padding: 0.3em;
-                        cursor: default;
-                        float:left;                        
-                        padding:50px 0px 50px 75px;
-
-                    a { border: 1px solid #DDD;
-                           color: #105CB6;
-                           text-decoration: none;
-                           padding: 0.2em 0.5em;
-                      }
-
-          .span em a  { padding: 0.2em 0.5em;  }
-
-             span.disabled { color: #aaaaaa; border-width: 2px;}
-
-             .current { font-style: normal;
-                        font-weight: bold;
-                        color: #ff0084;
-                      }
-        a:hover, a:focus {
-                         border-color: #003366;
-                         background: #0063dc;
-                         color: white;
+                        a{
+                         text-decoration:none;
+                         float:left;
                          }
-
-                    .page_info {
-                        color: #aaaaaa;
-                        padding-top: 0.8em;
-                        }
-                        .previous_page, .next_page {
-                         border-width: 2px;
-                            }
-                     .previous_page {
-                        margin-right: 1em; }
-                      .next_page {
-                        margin-left: 1em;
-                          }
-
 }
-
- ul#nav{ list-style:none; }
+ul#nav{
+    list-style:none;
+    float:left;
+ }

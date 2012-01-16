@@ -4,10 +4,10 @@ class Movie < ActiveRecord::Base
 
   def self.fetch_movies(args)
     if args[:search].present?
-      where('title ILIKE ?', "%#{args[:search]}%").paginate(:page => args[:page], :per_page => 20)
+      where('title ILIKE ?', "%#{args[:search]}%").paginate(:page => args[:page], :per_page => 14)
     else
       #Movie.find(:all,:order => sort_column(args[:sort]) + " " + sort_order(args[:direction]) )
-      order(sort_column(args[:sort]) + " " + sort_order(args[:direction])).paginate(:page => args[:page], :per_page => 20)
+      order(sort_column(args[:sort]) + " " + sort_order(args[:direction])).paginate(:page => args[:page], :per_page => 14)
     end
   end
   
