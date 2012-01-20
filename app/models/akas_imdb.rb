@@ -9,5 +9,8 @@ class AkasImdb
   def self.new(id)
     Imdb::Movie.new(id)
   end
-  
+
+  def self.suggest_list(title)
+   Imdb::Search.new(title).movies[0..3]
+  end
 end

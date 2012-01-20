@@ -2103,7 +2103,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .pagination ul {
   float: left;
   margin: 0;
-  border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -2139,7 +2138,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 }
 .pagination a:hover, .pagination .active a , .pagination em{
-  background-color: #c7eefe;
+  background-color: #0064CD;
 }
 .pagination .disabled a, .pagination .disabled, .pagination .disabled a:hover {
   background-color: transparent;

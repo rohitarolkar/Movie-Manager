@@ -1,28 +1,41 @@
-<%= form_for(@movie) do |f| %>
+<%= form_for(@movie, :html => {:class => "add_movie_form"}) do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
       <ul>
-      <% @movie.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :imdb_id %><br />
-    <%= f.text_field :imdb_id %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
+  <% if @fetched_movies != nil %>
+    <h3> Click the button for saving </h3>
+    <% @fetched_movies.each do |movie| %>
+      <%= submit_tag  'Add Movie', :name => 'save' ,:id => 'submit_movie',:class => "btn" %><%= link_to movie.title, '#',  :class => 'movie_fetched' ,:id => movie.id %>
+      <br/>
+      <br/>
+    <% end %>
+    <%= hidden_field_tag :imdb_id %>
+  <% else %>
+
+    <div class="clearfix">
+      <%= f.label :title %>
+      <div class="input">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <%= f.label :imdb_id %>
+      <div class="input">
+        <%= f.text_field :imdb_id %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

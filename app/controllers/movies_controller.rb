@@ -1,8 +1,10 @@
 class MoviesController < ApplicationController
+  before_filter :load_redis
   def index
     #@movies = Movie.search(params[:search])
     #@movies = Movie.order(sort_column + " " + sort_order)
     @movies = Movie.fetch_movies(params)
+    #@rescent_views =  RedisData.get_rescent_views(request.remote_ip.to_s)
   end
 
   # GET /movies/1
@@ -26,15 +28,14 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(params[:movie])
-
+    @movie = Movie.new(params[:movie])    
+    @fetched_movies =  AkasImdb.suggest_list(params[:movie][:title]) if params[:imdb_id] == nil && params[:movie][:title]
     respond_to do |format|
-      if @movie.save
+      if params[:imdb_id] || @fetched_movies.try(:length) == 1
+        Resque.enqueue(FetchMovie,params[:imdb_id] ||  @fetched_movies.first.id )
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
-        format.json { render json: @movie, status: :created, location: @movie }
       else
         format.html { render action: "new" }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,5 +68,9 @@ class MoviesController < ApplicationController
     end
   end
 
+  private
+  def load_redis
+    @redis = RedisData.redis_con
+  end
  
 end
