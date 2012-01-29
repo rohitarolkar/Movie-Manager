@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225142221) do
+ActiveRecord::Schema.define(:version => 20120129190353) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
     t.string   "imdb_id"
-    t.string   "url"
+    t.text     "url"
     t.text     "cast_members"
     t.string   "director"
     t.string   "genres"

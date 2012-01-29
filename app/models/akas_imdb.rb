@@ -11,6 +11,6 @@ class AkasImdb
   end
 
   def self.suggest_list(title)
-   Imdb::Search.new(title).movies[0..3]
+   Imdb::Search.new(title).movies[0..5]
   end
 end
