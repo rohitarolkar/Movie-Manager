@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 ul#nav li{
            margin-right:10px;
            float : left;
@@ -14,9 +16,109 @@ ul#nav li{
                         a{
                          text-decoration:none;
                          float:left;
+
+                            img{
+                                    border-color: #E8E8E8;
+                                    border-style: solid;
+                                    border-width: 1px;
+                                }
+                                img:hover{
+
+                            height:210;
+                            width:135;
+                                }
                          }
+
+                        a:hover {
+                            background-color:inherit;
+                                        img{
+                                            border: 1px solid black;
+                                            }
+                        }
 }
 ul#nav{
     list-style:none;
     float:left;
  }
+
+div#movie-show{
+
+            -moz-border-radius: 12px;
+            -webkit-border-radius: 12px;
+            -o-border-radius: 12px;
+            -khtml-border-radius: 12px;
+            border-radius: 12px;
+            border: 1px solid #E8E8E8;
+            margin-bottom: 7px;
+            padding: 10px 12px;
+            background-color: white;
+            width: 70%;
+            height:400px;
+
+    div#image_primary{
+        img{            border-color: #E8E8E8;
+                        border-style: solid;
+                        border-width: 1px;
+        }
+    }
+
+    div.page-header-movie{
+        margin: 4px 0 12px;
+             small{
+                    font-size: 12px;
+                  }
+    }
+
+    #movie-details{
+                    div.star-box{
+                        border-color: #E8E8E8;
+                        border-style: solid;
+                        border-width: 1px 0;
+                        color: #666;
+                        font-size: 11px;
+                        margin-right: -12px;
+                        padding: 10px 12px 11px 0;
+                        width: 100%;
+                        height:65px;
+
+                                div.star-box-giga-star{
+                                    width: 66px;
+                                    height: 66px;
+                                    line-height: 66px;
+                                    display: inline-block;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    font-size: 15px;
+                                    font-weight: bold;
+                                    color: black;
+                                    font-family: tahoma;
+                                    float: left;
+                                    padding-right: 5px;
+                                    background:url('rating-bg.png') top left no-repeat;
+                                }
+                        }
+    }
+
+    p{
+        margin: 0.5em 0 0.75em;
+    }
+    div.text-block{
+        height: 1.7em;
+    }
+
+}
+div.title-overview{
+    padding: 10px 12px 0 0;
+    position: relative;
+}
+    h4.inline {
+        font-size: 14px;
+        display: inline;
+        padding: 0 0.5em 0 0;
+    }
+
+
+
+div#clear-both{
+    clear:both;
+}
