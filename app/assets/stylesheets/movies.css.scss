@@ -5,31 +5,33 @@
 
 
 ul#nav li{
-           margin-right:10px;
+           margin-right:20px;
            float : left;
-           margin-top :10px;
            text-decoration:none;
-
+           height: 240px;
+           font-size: 11px;
+           
     div.movie-block-index{ 
                            text-align:center;
-                         }
-                        a{
-                         text-decoration:none;
-                         float:left;
+                           height:205px;
+}
+                        a#a-block{
+                             text-decoration:none;
+                             float:left;
+                             height :200px;
 
                             img{
                                     border-color: #E8E8E8;
                                     border-style: solid;
                                     border-width: 1px;
                                 }
-                                img:hover{
-
-                            height:210;
-                            width:135;
+                             img:hover{ 
+                                        height:210;
+                                        width:135;
                                 }
-                         }
+                          }
 
-                        a:hover {
+                        a.image-hover-over:hover {
                             background-color:inherit;
                                         img{
                                             border: 1px solid black;
@@ -40,6 +42,13 @@ ul#nav{
     list-style:none;
     float:left;
  }
+
+a.image-hover-over{
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
 
 div#movie-show{
 
@@ -79,22 +88,52 @@ div#movie-show{
                         margin-right: -12px;
                         padding: 10px 12px 11px 0;
                         width: 100%;
-                        height:65px;
+                        height:72px;
 
-                                div.star-box-giga-star{
-                                    width: 66px;
-                                    height: 66px;
-                                    line-height: 66px;
-                                    display: inline-block;
-                                    text-align: center;
-                                    vertical-align: middle;
-                                    font-size: 15px;
-                                    font-weight: bold;
-                                    color: black;
-                                    font-family: tahoma;
-                                    float: left;
-                                    padding-right: 5px;
-                                    background:url('rating-bg.png') top left no-repeat;
+                            div.imdb-ratings{
+                                    width: 80px;
+                                    height: 80px;
+                                    float:left;
+                                    margin: 1px solid red;
+
+                                    div.star-box-giga-star{
+                                        width: 66px;
+                                        height: 66px;
+                                        line-height: 66px;
+                                        display: inline-block;
+                                        text-align: center;
+                                        vertical-align: middle;
+                                        font-size: 15px;
+                                        font-weight: bold;
+                                        color: black;
+                                        font-family: tahoma;
+                                        float: left;
+                                        padding-right: 5px;
+                                        background:url('rating-bg.png') top left no-repeat;
+                                    }
+                                }
+                                // Add Manual Ratings here
+                                div.my-ratings{
+                                    float:left;
+                                    height: 20px;
+                                    width:250px;
+                                    .rating-star{
+                                                background: url('star-grey.jpg')0 0;
+                                                width : 16px;
+                                                margin-right: 5px;
+                                                height: 16px;
+                                                float: left;
+                                                display: block;
+                                                }
+                                             .on{
+                                                 background: url('star-yellow.jpg')0 0;
+                                                }
+                                             .on-temp{
+                                                 background: url('star-yellow.jpg')0 0;
+                                                }
+                                     span.rating-helper{
+                                                   padding-left:  10px;
+                                                }
                                 }
                         }
     }
@@ -118,7 +157,8 @@ div.title-overview{
     }
 
 
-
 div#clear-both{
     clear:both;
 }
+
+

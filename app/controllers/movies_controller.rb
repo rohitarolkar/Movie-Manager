@@ -49,6 +49,7 @@ class MoviesController < ApplicationController
       if @movie.update_attributes(params[:movie])
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
         format.json { head :ok }
+        format.xhr( render :nothing => true)
       else
         format.html { render action: "edit" }
         format.json { render json: @movie.errors, status: :unprocessable_entity }

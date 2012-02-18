@@ -19,7 +19,7 @@ class FetchMovie
     movie = Movie.find_or_create_by_imdb_id(:imdb_id => id)
       imdb_movie = Imdb::Movie.new(id)
       movie.update_attributes!( :title => imdb_movie.title,
-                                :url => imdb_movie.url.gsub("akas.imdb.","imdb"),
+                                :url => imdb_movie.url.gsub("akas.imdb","imdb"),
                                 :cast_members => imdb_movie.cast_members.join(",") ,
                                 :director => imdb_movie.director.join(","),
                                 :genres => imdb_movie.genres.join(",") ,

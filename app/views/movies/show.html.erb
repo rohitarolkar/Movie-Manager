@@ -8,30 +8,44 @@
           </div>
         </td>
         <td id="movie-details">
-            <div class="page-header-movie">
-              <h2><%=link_to @movie.title , @movie.url %></h2>
-              <small><%= @movie.length %> mins - <%= @movie.genres %><br/> - <%= @movie.release_date %></small>
-            </div>
-            <div class="star-box">
+          <div class="page-header-movie">
+            <h2><%=link_to @movie.title , @movie.url %></h2>
+            <small><%= @movie.length %> mins - <%= @movie.genres %><br/> - <%= @movie.release_date %></small>
+          </div>
+          <div class="star-box">
+            <div class="imdb-ratings">
               <div class="star-box-giga-star">
-                8.7
+                <%= @movie.imdb_rating %>
               </div>
+              <span>Imdb Ratings</span>
             </div>
-            <p><%= @movie.plot %> </p>
-            <p></p>
-            <div class="text-block">
-              <h4 class="inline">Director:</h4> <%= @movie.director %>
+
+            <div class="my-ratings">
+              <% form_id = "movie_#{@movie.id}_rating" %>
+              <%= form_for @movie, :html => {:id => "movie_#{@movie.id}_rating" } do |f| %>
+                <%= f.hidden_field  :my_rating %>
+                <% (1..10).each do |i| %>
+                  <li class="rating-star <%= 'on' if @movie.my_rating >= i %>"style="list-style:none" data-stars="<%= i %>" id =<%= "#{form_id}_#{i}"%> data-form-id=<%= "#{form_id}"%>></li>
+                <%end%>
+                <span class="rating-helper"><%=@movie.my_rating.try(:to_i)%>/10</span>
+              <%end%>
             </div>
-            <div class="text-block">
-              <h4 class="inline">Stars:</h4> <%= @movie.cast_members.split(',')[0..5].join(",") %>
-            </div>
+          </div>
+          <p><%= @movie.plot %> </p>
+          <p></p>
+          <div class="text-block">
+            <h4 class="inline">Director:</h4> <%= @movie.director %>
+          </div>
+          <div class="text-block">
+            <h4 class="inline">Stars:</h4> <%= @movie.cast_members.split(',')[0..5].join(",") %>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-  <p id="notice"><%= notice %></p>
-  <%= link_to 'Edit', edit_movie_path(@movie) ,{:class=> 'btn primary'}%>
-  <%= link_to 'Back', movies_path ,{:class=> 'btn primary'}%>
-  <%= link_to 'Destroy', @movie, :confirm => 'Are you sure?', :method => :delete ,:class=> 'btn primary' %>
+<p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_movie_path(@movie) ,{:class=> 'btn primary'}%>
+<%= link_to 'Back', movies_path,{:class=> 'btn primary'}%>
+<%= link_to 'Destroy', @movie, :confirm => 'Are you sure?', :method => :delete ,:class=> 'btn primary' %>
