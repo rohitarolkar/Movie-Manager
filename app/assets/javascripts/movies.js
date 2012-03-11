@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#submit_movie').click(function(){
-        var value = $('.movie_fetched').attr('id');
+        var value = $('#submit_movie').attr('imdb_id');
         $('#imdb_id').attr('value',value);
     });
 });
