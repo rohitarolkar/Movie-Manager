@@ -33,7 +33,6 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if params[:imdb_id] || @fetched_movies.try(:length) == 1
-        imdb_movie_id = params[:movie][:imdb_id] if params[:movie].try([:imdb_id]).present?
         Resque.enqueue(FetchMovie,params[:imdb_id] || @fetched_movies.first.id)
 #       FetchMovie.perform(params[:imdb_id] || @fetched_movies.first.id)
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }

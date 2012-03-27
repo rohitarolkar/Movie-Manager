@@ -3,7 +3,7 @@ class FetchMovie
   @queue = :fetch_movie_queue
   def self.perform(id,movies_list = nil)
     #raw_movie =  AkasImdb.new(id)
-    if id.nil?
+    if movies_list
       movies_list.each do |name|
         name.gsub!(/.(mkv|avi|mp4)$/,"")
         search =  AkasImdb.imdb_raw(name)
@@ -11,7 +11,7 @@ class FetchMovie
         self.add_movie(imdb_movie.id) if imdb_movie.id
       end
     else
-      self.add_movie(id)
+      self.add_movie(id) if id
     end
   end
 
@@ -32,10 +32,15 @@ class FetchMovie
                                 :trailer_url => imdb_movie.trailer_url,
                                 :year => imdb_movie.year,
                                 :release_date => imdb_movie.release_date)
-                              
+      movie.update_attributes!( :poster_1 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SY209_CR0,0,140,209_.jpg",
+                                :poster_2 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SY317_.jpg",
+                                :poster_3 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SX640_SY948_.jpg"
+                                ) if movie.poster
+    if Rails.env == 'development' and movie.poster
       fetch_poster("app/assets/images/posters/#{id}_large.jpg","#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SX640_SY948_.jpg")
       fetch_poster("app/assets/images/posters/#{id}_small.jpg","#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SY317_.jpg")
     end
+  end
 
   def self.fetch_poster(path,url)
     unless File.exist?(path)
