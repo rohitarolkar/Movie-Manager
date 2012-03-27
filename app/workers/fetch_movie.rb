@@ -16,6 +16,7 @@ class FetchMovie
   end
 
   def self.add_movie(id)
+    id.gsub!("\n","")
     movie = Movie.find_or_create_by_imdb_id(id)
       imdb_movie = Imdb::Movie.new(id)
       movie.update_attributes!( :title => imdb_movie.title,
@@ -31,7 +32,7 @@ class FetchMovie
                                 :tagline => imdb_movie.tagline,
                                 :trailer_url => imdb_movie.trailer_url,
                                 :year => imdb_movie.year,
-                                :release_date => imdb_movie.release_date)
+                                :release_date => imdb_movie.release_date) rescue nil
       movie.update_attributes!( :poster_1 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SY209_CR0,0,140,209_.jpg",
                                 :poster_2 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SY317_.jpg",
                                 :poster_3 => "#{imdb_movie.poster.gsub(".jpg","")}"+"._V1._SX640_SY948_.jpg"
