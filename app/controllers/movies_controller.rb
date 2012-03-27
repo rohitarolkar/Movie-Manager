@@ -28,11 +28,14 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    @movie = Movie.new(params[:movie])    
-    @fetched_movies =  AkasImdb.suggest_list(params[:movie][:title]) if params[:imdb_id] == nil && params[:movie][:title]
+    @movie = Movie.new(params[:movie])
+    @fetched_movies =  AkasImdb.suggest_list(params[:movie][:title]) if params[:imdb_id] == nil && params[:movie][:title] && params[:movie][:imdb_id].blank?
+
     respond_to do |format|
       if params[:imdb_id] || @fetched_movies.try(:length) == 1
-        Resque.enqueue(FetchMovie,params[:imdb_id] ||  @fetched_movies.first.id )
+        imdb_movie_id = params[:movie][:imdb_id] if params[:movie].try([:imdb_id]).present?
+        Resque.enqueue(FetchMovie,params[:imdb_id] || @fetched_movies.first.id)
+#       FetchMovie.perform(params[:imdb_id] || @fetched_movies.first.id)
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
       else
         format.html { render action: "new" }

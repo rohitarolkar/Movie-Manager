@@ -1,9 +1,13 @@
 $(document).ready(function(){
-    $('#submit_movie').click(function(){
+    /*   $('#submit_movie').click(function(){
         var value = $('#submit_movie').attr('imdb_id');
         $('#imdb_id').attr('value',value);
     });
-});
+    */
+    });
+function set_imdb_id(imdb_id){
+    $('#imdb_id').attr('value',imdb_id);
+}
 
 $(function() {
     $('.rating-star').click(function(){

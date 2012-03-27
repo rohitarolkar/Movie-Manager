@@ -9,12 +9,14 @@
 <div class="hero-unit">
   <ul id="nav">
     <% @movies.each do |movie| %>
-      <li>
-        <div class="movie-block-index">
-          <%= link_to image_tag("posters/#{movie.imdb_id}_small.jpg" , :border => 0 ,:width => 135, :height => 200) , movie ,{:id => "a-block", :class=>"image-hover-over" }%>
-        </div>
-        <%= link_to truncate(movie.title, :length => 22, :omission => '...') ,movie ,params.merge(:sort => params[:sort])%>
-      </li>
+      <% if movie.director %>
+        <li>
+          <div class="movie-block-index">
+            <%= link_to image_tag("posters/#{movie.imdb_id}_small.jpg" , :border => 0 ,:width => 135, :height => 200) , movie ,{:id => "a-block", :class=>"image-hover-over" }%>
+          </div>
+          <%= link_to truncate(movie.title, :length => 22, :omission => '...') ,movie ,params.merge(:sort => params[:sort])%>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

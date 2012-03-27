@@ -14,7 +14,7 @@
   <% if @fetched_movies != nil %>
     <h3> Click the button for saving </h3>
     <% @fetched_movies.each do |movie| %>
-      <%= submit_tag  'Add Movie', :name => 'save' ,:id => 'submit_movie',:class => "btn" ,:imdb_id => movie.id %><%= link_to movie.title, '#',  :class => 'movie_fetched' ,:id => movie.id %>
+      <%= submit_tag  'Add Movie', :name => 'save' ,:id => 'submit_movie',:class => "btn" ,:onclick => "set_imdb_id('#{movie.id.to_s}')",:imdb_id => movie.id %><%= link_to movie.title, '#',  :class => 'movie_fetched' ,:id => movie.id %>
       <br/>
       <br/>
     <% end %>
