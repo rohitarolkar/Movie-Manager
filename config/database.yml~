@@ -2,16 +2,16 @@ development:
   adapter: postgresql
   database: laguna
   username: rohit
-  password: 
+  password: rohit
 
 test:
   adapter: postgresql
   database: laguna
   username: rohit
-  password: 
+  password: rohit
 
 production:
   adapter: postgresql
   database: laguna
   username: rohit
-  password: 
+  password: rohit
