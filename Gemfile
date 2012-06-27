@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 gem 'therubyracer'
 gem 'imdb'
+gem 'ruby-tmdb'
 gem 'resque',:require => "resque/server"
 gem 'will_paginate', '~> 3.0'
 

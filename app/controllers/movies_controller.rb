@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
-  before_filter :load_redis
+  #before_filter :load_redis
+  http_basic_authenticate_with :name => "just", :password => "bazinga", :except => [:index , :show]
+  
   def index
     #@movies = Movie.search(params[:search])
     #@movies = Movie.order(sort_column + " " + sort_order)
@@ -13,7 +15,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
   end
-
+  
   # GET /movies/new
   # GET /movies/new.json
   def new
@@ -33,8 +35,11 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if params[:imdb_id] || @fetched_movies.try(:length) == 1
-        Resque.enqueue(FetchMovie,params[:imdb_id] || @fetched_movies.first.id)
-#       FetchMovie.perform(params[:imdb_id] || @fetched_movies.first.id)
+        begin
+          Resque.enqueue(FetchMovie,params[:imdb_id] || @fetched_movies.first.id)
+        rescue
+          FetchMovie.perform(params[:imdb_id] || @fetched_movies.first.id)
+        end
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
       else
         format.html { render action: "new" }
